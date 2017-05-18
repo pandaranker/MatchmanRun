@@ -1,0 +1,9 @@
+D:\CODE\Csharp\MatchmanRun\MatchmanRUN\bin\Debug\MatchmanRUN.exe.config
+D:\CODE\Csharp\MatchmanRun\MatchmanRUN\bin\Debug\MatchmanRUN.exe
+D:\CODE\Csharp\MatchmanRun\MatchmanRUN\bin\Debug\MatchmanRUN.pdb
+D:\CODE\Csharp\MatchmanRun\MatchmanRUN\obj\Debug\MatchmanRUN.csprojResolveAssemblyReference.cache
+D:\CODE\Csharp\MatchmanRun\MatchmanRUN\obj\Debug\MatchmanRUN.Form1.resources
+D:\CODE\Csharp\MatchmanRun\MatchmanRUN\obj\Debug\MatchmanRUN.Properties.Resources.resources
+D:\CODE\Csharp\MatchmanRun\MatchmanRUN\obj\Debug\MatchmanRUN.csproj.GenerateResource.Cache
+D:\CODE\Csharp\MatchmanRun\MatchmanRUN\obj\Debug\MatchmanRUN.exe
+D:\CODE\Csharp\MatchmanRun\MatchmanRUN\obj\Debug\MatchmanRUN.pdb
