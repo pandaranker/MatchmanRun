@@ -17,8 +17,8 @@ namespace MatchmanRUN
             InitializeComponent();
             timer1.Interval = 250;
         }
-        Game game=null;
-        
+        Game game = null;
+
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -27,11 +27,17 @@ namespace MatchmanRUN
             pictureBox1.Width = Game.BlockImageWidth * Game.PlayingFieldWidth + 3;
             pictureBox1.Invalidate();
             timer1.Enabled = true;
+            if (button1.Left >= 5)
+            {
+                button1.Visible = false;
+                button3.Visible = false;//让按钮隐藏
+                timer1.Enabled = true;
+            }
         }
         private void pictureBox1_Paint(object sender, PaintEventArgs e)
         {
             //重画游戏面板
-            
+
             if (game != null)
             {
                 game.DrawMatchman(e.Graphics);
@@ -49,5 +55,44 @@ namespace MatchmanRUN
                 MessageBox.Show("游戏结束,", "提示");
             }
         }
+        protected override bool ProcessCmdKey(ref Message msg, Keys e)
+        //重写ProcessCmdKey方法
+        {
+            if (button2.Text == "继续游戏") return true;//暂停时不响应键盘
+            if (e == Keys.Up || e == Keys.Down || e == Keys.Space ||
+                     e == Keys.Left || e == Keys.Right)
+            {
+                MyKeyPress(this, new KeyPressEventArgs((char)e));
+            }
+            return true;
+        }
+
+        private void MyKeyPress(Form1 form1, KeyPressEventArgs keyPressEventArgs)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (button2.Text == "继续")
+            {
+                //timer1.Enabled = true;
+                button2.Text = "暂停";
+                button1.Visible = false;
+                button3.Visible = false;
+            }
+            else
+            {
+                //timer1.Enabled = false;
+                button2.Text = "继续";
+                button3.Visible = true;
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            button2.Text = "暂停";
+            this.Dispose();
+        }
     }
-}
+    }
