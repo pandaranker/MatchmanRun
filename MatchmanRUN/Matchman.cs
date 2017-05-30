@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Drawing.Imaging;
 using System.Windows.Forms;
 using System.Drawing;
 
@@ -15,22 +16,27 @@ namespace MatchmanRUN
         private short top;
         private short left;
         private int ID;
+        private int fpi=0;   //帧
         public int[,] shape;
+        Bitmap brickImage = mman.ManRun;
+        private EventHandler evtHandler = null;
         public Matchman()
         {
             this.ID = 1;
             switch (this.ID)
             {
                 case 1:
-                    this.Width = 2;
+                    this.Width = 3;
                     this.Height = 4;
                     this.Left = 3;
                     this.top = 25;
                     shape = new int[this.Width, this.Height];
-                    shape[0, 0] = 1; shape[0, 1] = 1;
-                    shape[1, 0] = 1; shape[1, 1] = 1;
-                    shape[0, 2] = 1; shape[0, 3] = 1;
-                    shape[1, 2] = 1; shape[1, 3] = 1;
+                    shape[0, 0] = 1; shape[0, 1] = 1; shape[0, 2] = 1; shape[0, 3] = 1;
+                    shape[1, 0] = 1; shape[1, 1] = 1; shape[1, 2] = 1; shape[1, 3] = 1;
+                    shape[2, 0] = 1; shape[2, 1] = 1; shape[2, 2] = 1; shape[2, 3] = 1;
+
+
+
                     break;
 
             }
@@ -79,23 +85,20 @@ namespace MatchmanRUN
                 left = value;
             }
         }
-
-        public void Draw(Graphics g)
+        public void Draw(PaintEventArgs e)
         {
-            Image brickImage = Image.FromFile("image/block0.gif");
-           
-            for (int i = 0; i < this.Width; i++)
-            {
-                for (int j = 0; j < this.Height; j++)
-                {
-                    if (this.shape[i, j] == 1)
-                    {
-                        //得到绘制这个格子的在游戏面板中的矩形区域
-                        Rectangle rect = new Rectangle((this.Left + i) * Game.BlockImageWidth, (this.Top + j) * Game.BlockImageHeight, Game.BlockImageWidth, Game.BlockImageHeight);
-                        g.DrawImage(brickImage, rect);
-                    }
-                }
-            }
+            
+            Image m_Image = mman.ManRun;
+            FrameDimension frameDim = new FrameDimension(m_Image.FrameDimensionsList[0]);
+            int count = m_Image.GetFrameCount(frameDim);
+            if (fpi <= count-2) fpi=fpi+1;
+            else fpi = 0;
+            m_Image.SelectActiveFrame(frameDim, fpi);
+            //得到主角图像在游戏面板中的矩形区域
+            Rectangle rect = new Rectangle((this.Left) * Game.BlockImageWidth, (this.Top) * Game.BlockImageHeight, Game.BlockImageWidth * 4, Game.BlockImageHeight * 5);
+            e.Graphics.DrawImage(m_Image, rect);
+            
+            
         }
     
 

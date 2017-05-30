@@ -15,7 +15,6 @@ namespace MatchmanRUN
         public Form1()
         {
             InitializeComponent();
-            timer1.Interval = 250;
         }
         Game game = null;
 
@@ -40,7 +39,7 @@ namespace MatchmanRUN
 
             if (game != null)
             {
-                game.DrawMatchman(e.Graphics);
+               game.DrawMatchman(e);
             }
         }
         private void timer1_Tick(object sender, EventArgs e)
