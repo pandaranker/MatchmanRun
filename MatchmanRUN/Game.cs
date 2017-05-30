@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using System.Drawing;
 
 namespace MatchmanRUN
@@ -28,11 +29,11 @@ namespace MatchmanRUN
         {
             role = new Matchman();
         }
-        public void DrawMatchman(Graphics g)
+        public void DrawMatchman(PaintEventArgs e)
         {
             if(role != null)   //检查当前角色是否为空
             {
-                role.Draw(g);
+                role.Draw(e);
             }
         }
         private void ClearPile()//清空游戏面板中的所有方砖

@@ -19,3 +19,10 @@ D:\Git\MatchmanRun\MatchmanRUN\obj\Debug\MatchmanRUN.csproj.GenerateResource.Cac
 E:\MatchmanRun\MatchmanRUN\bin\Debug\MatchmanRUN.exe.config
 E:\MatchmanRun\MatchmanRUN\obj\Debug\MatchmanRUN.exe
 E:\MatchmanRun\MatchmanRUN\obj\Debug\MatchmanRUN.pdb
+E:\MatchmanRun\MatchmanRUN\bin\Debug\MatchmanRUN.exe
+E:\MatchmanRun\MatchmanRUN\bin\Debug\MatchmanRUN.pdb
+E:\MatchmanRun\MatchmanRUN\obj\Debug\MatchmanRUN.csprojResolveAssemblyReference.cache
+E:\MatchmanRun\MatchmanRUN\obj\Debug\MatchmanRUN.Form1.resources
+E:\MatchmanRun\MatchmanRUN\obj\Debug\MatchmanRUN.mman.resources
+E:\MatchmanRun\MatchmanRUN\obj\Debug\MatchmanRUN.Properties.Resources.resources
+E:\MatchmanRun\MatchmanRUN\obj\Debug\MatchmanRUN.csproj.GenerateResource.Cache
