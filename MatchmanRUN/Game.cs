@@ -10,7 +10,7 @@ namespace MatchmanRUN
 {
     class Game
     {
-        public const int BlockImageWidth = 11;      //每个方块的大小
+        public const int BlockImageWidth = 11;      //每个格子的大小
         public const int BlockImageHeight = 11;
         public const int PlayingFieldWidth = 75;     //游戏面板大小
         public const int PlayingFieldHeight = 50;

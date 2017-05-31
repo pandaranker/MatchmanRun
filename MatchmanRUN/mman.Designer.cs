@@ -63,6 +63,16 @@ namespace MatchmanRUN {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap ManJumpX {
+            get {
+                object obj = ResourceManager.GetObject("ManJumpX", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap ManRun {
             get {
                 object obj = ResourceManager.GetObject("ManRun", resourceCulture);

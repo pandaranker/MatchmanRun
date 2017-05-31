@@ -15,14 +15,15 @@ namespace MatchmanRUN
         private short height;
         private short top;
         private short left;
-        private int ID;
-        private int fpi=0;   //帧
+        private int ID = 1;      //主角号
+        private int fpi = 0;     //当前帧数，任何状态统一一个帧数
+        private int state = 1;   //状态，用这个来设置主角状态
+        private int oldstate = 1;//上一个状态
         public int[,] shape;
         Bitmap brickImage = mman.ManRun;
         private EventHandler evtHandler = null;
         public Matchman()
         {
-            this.ID = 1;
             switch (this.ID)
             {
                 case 1:
@@ -31,7 +32,7 @@ namespace MatchmanRUN
                     this.Left = 3;
                     this.top = 25;
                     shape = new int[this.Width, this.Height];
-                    shape[0, 0] = 1; shape[0, 1] = 1; shape[0, 2] = 1; shape[0, 3] = 1;
+                    shape[0, 0] = 1; shape[0, 1] = 1; shape[0, 2] = 1; shape[0, 3] = 1;//一号主角是3*4规格的矩形
                     shape[1, 0] = 1; shape[1, 1] = 1; shape[1, 2] = 1; shape[1, 3] = 1;
                     shape[2, 0] = 1; shape[2, 1] = 1; shape[2, 2] = 1; shape[2, 3] = 1;
 
@@ -87,20 +88,34 @@ namespace MatchmanRUN
         }
         public void Draw(PaintEventArgs e)
         {
-            
-            Image m_Image = mman.ManRun;
-            FrameDimension frameDim = new FrameDimension(m_Image.FrameDimensionsList[0]);
-            int count = m_Image.GetFrameCount(frameDim);
-            if (fpi <= count-2) fpi=fpi+1;
+            Image m_Image=null;
+            switch (this.state)                //用switch语句确定改变当前动作图
+            {
+                case 1:
+                    m_Image = mman.ManRun;
+                    break;
+                case 2:
+                    m_Image = mman.ManJumpX;
+                    break;
+            }
+            if (oldstate != state)
+            {
+                oldstate = state;
+                fpi = 0;
+            }
+            FrameDimension frameDim = new FrameDimension(m_Image.FrameDimensionsList[0]);//存储gif图片的相应信息
+            int count = m_Image.GetFrameCount(frameDim);                                 //获取图片总帧数
+            if (fpi <= count - 2) fpi = fpi + 1;                                         //帧数递增
             else fpi = 0;
-            m_Image.SelectActiveFrame(frameDim, fpi);
-            //得到主角图像在游戏面板中的矩形区域
-            Rectangle rect = new Rectangle((this.Left) * Game.BlockImageWidth, (this.Top) * Game.BlockImageHeight, Game.BlockImageWidth * 4, Game.BlockImageHeight * 5);
-            e.Graphics.DrawImage(m_Image, rect);
-            
-            
+            m_Image.SelectActiveFrame(frameDim, fpi);                                    //把图片设置到目标帧
+            Rectangle rect = new Rectangle((this.Left) * Game.BlockImageWidth, (this.Top) * Game.BlockImageHeight, Game.BlockImageWidth * 3, Game.BlockImageHeight * 4);
+                                                                                         //得到主角图像在游戏面板中的矩形区域
+            e.Graphics.DrawImage(m_Image, rect);                                         //在picturebox上画出目标
+
+
         }
-    
+
 
     }
 }
+
