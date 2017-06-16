@@ -117,9 +117,12 @@ namespace MatchmanRUN
         }
         public void DeadLine(out int LEFT, out int TOP, out int NEXTTOP)
         {
-            LEFT = (left+width) * Game.BlockImageWidth;               //此处的LEFT其实是人的最右 ，TOP其实是人的最下点。
+            LEFT = (left+width) * Game.BlockImageWidth;               //此处的LEFT其实是人的最右 ，TOP其实是人的最下点。是死亡线的左右的意思
             TOP = (top+height) * Game.BlockImageHeight-movey[movex];
-            NEXTTOP = (top + height) * Game.BlockImageHeight - movey[movex+1];
+            if (state!=3)
+                NEXTTOP = (top + height) * Game.BlockImageHeight - movey[movex + 1];
+            else
+                NEXTTOP = TOP+2*Game.BlockImageHeight;
         }
   
         public void Draw(Graphics e)
@@ -153,7 +156,6 @@ namespace MatchmanRUN
             Rectangle rect = new Rectangle((this.Left) * Game.BlockImageWidth, (this.Top) * Game.BlockImageHeight-movey[movex], Game.BlockImageWidth * 4, Game.BlockImageHeight * 4);
                                                                                          //得到主角图像在游戏面板中的矩形区域
             e.DrawImage(m_Image, rect);                                         //在picturebox1上画出目标
-
 
         }
 
