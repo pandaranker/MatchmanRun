@@ -21,8 +21,8 @@ namespace MatchmanRUN
         public bool over = false;                    //游戏是否结束
         public Game()                                //Game类构造函数
         {
-            pile = new int[PlayingFieldWidth, PlayingFieldHeight];
-            ClearPile();
+           // pile = new int[PlayingFieldWidth, PlayingFieldHeight];
+           // ClearPile();
             CreateNewMan();
             CreateNewMaps();
             CreateNewMap();
@@ -38,7 +38,8 @@ namespace MatchmanRUN
         }
         private void CreateNewMap()
         {
-            maps.Add(new map(1));
+            Random r = new Random();
+            maps.Add(new map(r.Next(1,7)));
         }
         public void DrawMatchman(PaintEventArgs e)
         {
@@ -51,6 +52,7 @@ namespace MatchmanRUN
                     {
                         role.Top += 2;
                         role.state = 3;
+                        role.Movex = 0;
                     }
                     else
                     {
@@ -80,7 +82,7 @@ namespace MatchmanRUN
                 //MessageBox.Show(a.ToString());
                 foreach (Block block in Map.blocks)
                 {
-                    if (role.state == 2 && block.underBlock(b, c, a))                   //跳上台
+                    if (((role.state==2&&role.Movex>6)||role.state==3) && block.underBlock(b, c, a))                   //跳上台
                     {
                         //over = true;
                         
@@ -108,7 +110,7 @@ namespace MatchmanRUN
                 //MessageBox.Show(a.ToString());
                 foreach (Block block in Map.blocks)
                 {
-                    if (block.underAir(b, c, a))
+                    if (block.underAir(b, c, a)||block.underBlock(b,c,a))
                     { return false; }
 
                 }

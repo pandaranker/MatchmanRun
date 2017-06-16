@@ -62,7 +62,17 @@ namespace MatchmanRUN
                         for (int j = 0; j < height; j++)
                             shape[i, j] = 1;
                     break;
-                
+                case 4:
+                    this.width = 2;
+                    this.height = 12;
+                    this.top = 17;
+                    this.left = 75;
+                    shape = new int[this.width, this.height];
+                    for (int i = 0; i < width; i++)
+                        for (int j = 0; j < height; j++)
+                            shape[i, j] = 1;
+                    break;
+
             }
             oldleft = left;
         }
@@ -146,7 +156,7 @@ namespace MatchmanRUN
         }
         public bool underBlock(int topp,int topn,int leftt)
         {
-            if (topp < top*Game.BlockImageHeight && topn > top*Game.BlockImageHeight && leftt>left*Game.BlockImageWidth && leftt-4*Game.BlockImageWidth<(left+width)*Game.BlockImageWidth)
+            if (topp <= top*Game.BlockImageHeight && topn > top*Game.BlockImageHeight && leftt>left*Game.BlockImageWidth && leftt-4*Game.BlockImageWidth<(left+width)*Game.BlockImageWidth)
                 return true;
             else
                 return false;

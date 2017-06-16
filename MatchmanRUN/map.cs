@@ -35,8 +35,101 @@ namespace MatchmanRUN
                     blocks.Add(new Block(2));
                     blocks.Add(new Block(3));
                     blocks.Add(new Block(3));
+                    blocks.ElementAt(3).Top -= 8;
+                    break;
+                case 2:
+                    this.num = 5;
+                    this.WaitTime = new int[num];
+                    WaitTime[0] = 0;
+                    WaitTime[1] = 14;                            //障碍物之间间隔的格子数
+                    WaitTime[2] = 20;
+                    WaitTime[3] = 32;
+                    WaitTime[4] = 32;
+                    this.left = 75;
+                    this.right = 120;
+                    blocks.Add(new Block(2));
+                    blocks.Add(new Block(1));
+                    blocks.Add(new Block(3));
+                    blocks.Add(new Block(3));
+                    blocks.Add(new Block(2));
+
                     blocks.ElementAt(3).Top -= 6;
                     break;
+                case 3:
+                    this.num = 5;
+                    this.WaitTime = new int[num];
+                    WaitTime[0] = 0;
+                    WaitTime[1] = 10;                            //障碍物之间间隔的格子数
+                    WaitTime[2] = 16;
+                    WaitTime[3] = 28;
+                    WaitTime[4] = 28;
+                    this.left = 75;
+                    this.right = 120;
+                    blocks.Add(new Block(3));
+                    blocks.Add(new Block(4));
+                    blocks.Add(new Block(3));
+                    blocks.Add(new Block(3));
+                    blocks.Add(new Block(4));
+
+                    blocks.ElementAt(3).Top -= 12;
+                    blocks.ElementAt(2).Top += 6;
+                    blocks.ElementAt(1).Top += 7;
+                    break;
+                case 4:
+                    this.num = 5;
+                    this.WaitTime = new int[num];
+                    WaitTime[0] = 0;
+                    WaitTime[1] = 18;                            //障碍物之间间隔的格子数
+                    WaitTime[2] = 20;
+                    WaitTime[3] = 26;
+                    WaitTime[4] = 26;
+                    this.left = 75;
+                    this.right = 120;
+                    blocks.Add(new Block(3));
+                    blocks.Add(new Block(1));
+                    blocks.Add(new Block(2));
+                    blocks.Add(new Block(1));
+                    blocks.Add(new Block(1));
+
+                    blocks.ElementAt(3).Top -= 8;
+                    break;
+                case 5:
+                    this.num = 5;
+                    this.WaitTime = new int[num];
+                    WaitTime[0] = 0;
+                    WaitTime[1] = 5;                            //障碍物之间间隔的格子数
+                    WaitTime[2] = 10;
+                    WaitTime[3] = 5;
+                    WaitTime[4] = 10;
+                    this.left = 75;
+                    this.right = 120;
+                    blocks.Add(new Block(1));
+                    blocks.Add(new Block(1));
+                    blocks.Add(new Block(1));
+                    blocks.Add(new Block(2));
+                    blocks.Add(new Block(3));
+
+                    ;
+                    break;
+                case 6:
+                    this.num = 5;
+                    this.WaitTime = new int[num];
+                    WaitTime[0] = 0;
+                    WaitTime[1] = 6;                            //障碍物之间间隔的格子数
+                    WaitTime[2] = 10;
+                    WaitTime[3] = 15;
+                    WaitTime[4] = 25;
+                    this.left = 75;
+                    this.right = 120;
+                    blocks.Add(new Block(2));
+                    blocks.Add(new Block(1));
+                    blocks.Add(new Block(2));
+                    blocks.Add(new Block(3));
+                    blocks.Add(new Block(3));
+                    blocks.ElementAt(3).Top -= 8;
+                    ;
+                    break;
+
             }
             int count = 0;
             foreach (Block block in this.blocks)
@@ -92,8 +185,6 @@ namespace MatchmanRUN
             {
                 if(block.ShouldDraw())
                 block.Draw(e);
-                
-
             }
             this.Move();     //每次绘图结束，进行移动与地图删除检测
             this.reallyMove();
